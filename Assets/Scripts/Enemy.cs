@@ -23,10 +23,13 @@ public class Enemy : MonoBehaviour
     {
         
     }
-    private void OnParticlesCollision(GameObject other)
+    private void OnParticleCollision(GameObject other)
     {
         GameObject fx = Instantiate(deathFX, transform.position, Quaternion.identity);
         fx.transform.parent = parent;
+        ScoreBoard scoreBoard = FindObjectOfType<ScoreBoard>();
+        scoreBoard.ScoreHit();
+
         print("collided" + gameObject.name);
         Destroy(gameObject);
     }
